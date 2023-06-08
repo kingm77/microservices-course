@@ -6,9 +6,9 @@ const mysql = require('mysql');
 app.use(express.json());
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
+  host: 'books-db',
+  user: 'admin',
+  password: 'pswd',
   database: 'books'
 });
 

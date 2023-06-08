@@ -6,6 +6,7 @@ services:
     depends_on:
       - authors-service
       - categories-service
+      - books-db
     ports:
       - 3000:3000
     networks:
@@ -16,6 +17,8 @@ services:
       context: ./authors-service
     ports:
       - 4000:4000
+    depends_on:
+      - authors-db
     networks:
       - my_network
 
@@ -24,7 +27,39 @@ services:
       context: ./categories-service
     ports:
       - 5000:5000
+    depends_on:
+      - categories-db
     networks:
       - my_network
+
+  books-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: pswd
+      MYSQL_DATABASE: books
+    volumes:
+      - ./books.sql:/docker-entrypoint-initdb.d/create-books-db.sql
+    networks:
+      - my_network
+
+  authors-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: pswd
+      MYSQL_DATABASE: authors
+    volumes:
+      - ./authors.sql:/docker-entrypoint-initdb.d/create-authors-db.sql
+    networks:
+      - my_network   
+
+  categories-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: pswd
+      MYSQL_DATABASE: categories
+    volumes:
+      - ./categories.sql:/docker-entrypoint-initdb.d/create-categories-db.sql
+    networks:
+      - my_network 
 networks:
-  my-network:
+  my_network:

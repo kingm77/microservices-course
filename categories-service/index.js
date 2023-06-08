@@ -5,9 +5,9 @@ const mysql = require('mysql');
 app.use(express.json());
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'tolo',
-  password: '',
+  host: 'categories-db',
+  user: 'admin',
+  password: 'pswd',
   database: 'categories'
 });
 
@@ -53,5 +53,5 @@ app.get('/categories/:id', (req, res) => {
 
 // Start the server
 app.listen(5000, () => {
-  console.log('Server is running on port 4000');
+  console.log('Server is running on port 5000');
 });
