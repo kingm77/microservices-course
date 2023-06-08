@@ -1,12 +1,10 @@
 {
-  "name": "microservices",
+  "name": "books-service",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-books": "node booksService.js",
-    "start-authors": "node authorsService.js",
-    "start-categories": "node categoriesService.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

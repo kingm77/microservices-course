@@ -1,0 +1,30 @@
+version: '3'
+services:
+  books-service:
+    build:
+      context: ./books-service
+    depends_on:
+      - authors-service
+      - categories-service
+    ports:
+      - 3000:3000
+    networks:
+      - my_network
+
+  authors-service:
+    build:
+      context: ./authors-service
+    ports:
+      - 4000:4000
+    networks:
+      - my_network
+
+  categories-service:
+    build:
+      context: ./categories-service
+    ports:
+      - 5000:5000
+    networks:
+      - my_network
+networks:
+  my-network:
