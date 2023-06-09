@@ -3,6 +3,12 @@ GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
 
 use categories;
 
+CREATE TABLE `categories` (
+  `id` int NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 INSERT INTO categories (id, name) VALUES
 (1, 'Category 1'),
 (2, 'Category 2'),
